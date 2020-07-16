@@ -1,0 +1,277 @@
+<soapenv:Envelope  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.seller.ventas.core.posnet.cardif.com.mx/" xmlns:v1="http://cardif.bnpparibas.com/lam/schema/sell/v1.1" xmlns:v11="http://cardif.bnpparibas.com/lam/schema/person/v1.1" xmlns:v12="http://cardif.bnpparibas.com/lam/schema/common/v1.1" xmlns:v13="http://cardif.bnpparibas.com/lam/schema/address/v1.1" xmlns:v14="http://cardif.bnpparibas.com/lam/schema/payment/v1" xmlns:cmm="http://cardif.bnpparibas.com/lam/schema/common/v1.1" xmlns:psn="http://cardif.bnpparibas.com/lam/schema/person/v1.1" xmlns:ads="http://cardif.bnpparibas.com/lam/schema/address/v1.1" xmlns:tns="http://cardif.bnpparibas.com/lam/schema/payment/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:saveSell>
+        <arg0>
+            <!--You may enter the following 6 items in any order-->
+           <sell:seller  xmlns:sell="http://cardif.bnpparibas.com/lam/schema/sell/v1.1" >
+					
+					<!-- Numero identificador del usuario que esta realizando la peticion al servicio-->
+					<psn:userIdentifier>2014042343</psn:userIdentifier>
+				</sell:seller>
+				<sell:productplan  xmlns:sell="http://cardif.bnpparibas.com/lam/schema/sell/v1.1" >
+					<product>
+	                         
+	                         <!--Id del producto, con base al catalogo proporcionado-->
+						<identifier>23</identifier>
+					</product>
+					<plan>
+
+					     <!-- Id del plan, con base al catalogo proporcionado-->
+						<identifier>60</identifier>
+					</plan>
+				</sell:productplan>
+				<sell:insured  xmlns:sell="http://cardif.bnpparibas.com/lam/schema/sell/v1.1" >
+					<psn:naturalPerson>
+
+					     <!-- Nombre o Nombres del Contratante-->
+						<psn:fullName>Lizeth</psn:fullName>
+						
+						<!-- Apellido Paterno del Contratante-->
+						<psn:firstName>López</psn:firstName>
+						
+						<!-- Apellido Materno del Contratante-->
+						<psn:lastName>Vázquez</psn:lastName>
+						
+						<!-- Fecha de Nacimiento del Contratante-->
+						<psn:birthDate>${='198'+org.apache.commons.lang.RandomStringUtils.randomNumeric(1)+'-0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())+'-0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())}</psn:birthDate>
+						
+						<!--Genero del Asegurado (male, female) del Contratante con base al catalogo proporcionado-->
+						<psn:genderIdentifier>female</psn:genderIdentifier>
+						<!-- Id de la nacionalidad del Contratante-->
+						<!-- 74 = Mexicano / 23-Norcoreano/27-Cubano/54-Irani/persa /95-Sirio/99-Sudanes-->
+						<psn:nacionalityCode>74</psn:nacionalityCode> 
+					</psn:naturalPerson>
+					<psn:contact>
+						<ads:address>
+						     <!-- Direccion , nombre calle del Contratante C Miguel Hidalgo Cda 12 de Oct-->
+							<ads:addressName>${='Paseo las palmas Avión '+org.apache.commons.lang.RandomStringUtils.random(5, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</ads:addressName>
+							
+							<!-- Direccion, Numero del Contratante-->
+							<ads:addressNumber>94 Cda 12</ads:addressNumber> 
+							<!-- Id de la colonia de la Direccion del Contratante-->
+							<!-- 294	Las aguilas / 713	Caxuxi-->
+							<ads:addressReference>294</ads:addressReference> 
+							<!-- Codigo Postal de la Direccion del Contratante-->
+							<ads:addressPostalCode>01710</ads:addressPostalCode>
+							<ads:state>
+								<!-- Id del Estado del Contratante-->
+								<cmm:identifier>09</cmm:identifier>
+							</ads:state>
+							<ads:district>
+								<!-- Id de la delegacion o municipio del Contratante con base al catalogo proporcionado-->
+								<!-- 10 alvaro Obregon / 54	San Salvador-->
+								<cmm:identifier>10</cmm:identifier>
+							</ads:district>
+						</ads:address>
+			                  <ads:phone>
+			                  	 <!--Numero de Telefono del Contratante -->
+			                     <ads:phoneNumber>${='55'+org.apache.commons.lang.RandomStringUtils.randomNumeric(8)}</ads:phoneNumber>
+			                     
+			                  </ads:phone>
+			                  <ads:email>
+			                     <!-- Mail del Contratante-->
+			                     <ads:email>lizeth.lopez@cardif.com.mx</ads:email>
+			                  </ads:email>
+					</psn:contact>
+				</sell:insured>
+				
+				<sell:pay xmlns:sell="http://cardif.bnpparibas.com/lam/schema/sell/v1.1">
+				     
+				     <!-- Monto del pago o cobro-->
+             			<tns:paymentAmmount>250.00</tns:paymentAmmount>
+             			<!-- Fecha en la que 2e esta realizando la venta-->
+                  		<tns:paymentDate>${=def now = new Date();now.format("yyyy-MM-dd")}</tns:paymentDate>
+
+               		<tns:PaymentMethod>
+               		     <!-- Id del metodo o medio de pago con base al catalogo proporcionado -->
+               		     <!-- 1-Efectivo/3-Cuenta CLABE/4-Cuenta de Cheques/5-Tarjeta Debito/6-Tarjeta Credito AMEX/7-Tarjeta Credito(VISA, MASTERCARD)-->
+                              <tns:methodIdentifier>3</tns:methodIdentifier> 
+                              <tns:CardReference>
+                              <!-- Numero de tarjeta para realizar el cobro-->
+                              <!-- 4111111111111111/5454545454545454/4915667336395977 -->
+						<tns:cardNumber>4111111111111111</tns:cardNumber>
+						     <!-- Nombre completo del titular de la Tarjeta-->
+							<tns:cardHolderName>${='Liz'+org.apache.commons.lang.RandomStringUtils.random(14, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray()) + ' Lo' + org.apache.commons.lang.RandomStringUtils.random(14, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray()) + ' Va' + org.apache.commons.lang.RandomStringUtils.random(10, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</tns:cardHolderName>
+							
+							<!-- CLABE interbancaria si se requiriera, es opcional-->
+							<tns:CLABE>072180002351082982</tns:CLABE>
+							<!-- CVV de la tarjeta en la que se realiza el cobro-->
+							<tns:codeCvv>042</tns:codeCvv>
+							<!-- Fecha de Vencimiento de la tarjeta-->
+							<!--<tns:validityDate>2018-05-25</tns:validityDate>-->
+							<tns:validityDate>22/10</tns:validityDate>
+						</tns:CardReference>
+                         </tns:PaymentMethod>
+            		</sell:pay>
+
+            		
+				<sell:responseFile xmlns:sell="http://cardif.bnpparibas.com/lam/schema/sell/v1.1" >                			
+            			<!-- responseFileType disponibles: url, file, email -->
+            			<!-- Enviar como parametro url para que el certificado sea generado de esta manera-->
+              			<sell:responseFileType>url</sell:responseFileType>
+           		</sell:responseFile>
+
+            		<sell:extraField xmlns:sell="http://cardif.bnpparibas.com/lam/schema/sell/v1.1" >
+            			<![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+
+            			<CAMPOEXTRA>
+            			
+            				<PARTYID>4</PARTYID>
+            				
+            				<!-- Periodicidad-->
+            				<!--1-PRECIO UNICO/2-PRECIO MENSUAL/3-PRECIO TRIMESTRAL/4-PRECIO ANUAL/5-PRECIO SEMESTRAL-->						
+						<IDFRECUENCIA>2</IDFRECUENCIA> 
+
+	            			<!-- * Dependera de la configuracion del Negocio -->
+	            			<!-- Duracion del seguro o poliza -->
+	            			<DURACION>${=org.apache.commons.lang.RandomStringUtils.random(1, (charset = ('1'..'9').join()).toCharArray())+org.apache.commons.lang.RandomStringUtils.randomNumeric(1)}</DURACION>
+
+	            			<!-- RFC del Contratante Obligatorio-->
+	            			<RFC>LOVL880506</RFC>
+	            			<!--<RFC>${='C0'+org.apache.commons.lang.RandomStringUtils.random(2, (charset = ('A'..'Z').join()).toCharArray())+ '8'+org.apache.commons.lang.RandomStringUtils.randomNumeric(1)+'0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())+'0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())+org.apache.commons.lang.RandomStringUtils.random(1, (charset = ('A'..'Z').join()).toCharArray())+org.apache.commons.lang.RandomStringUtils.random(2, (charset = (('1'..'9')).join()).toCharArray())}</RFC>-->
+						
+						
+
+	            			<!-- En caso de existir debera de enviar un msj-->
+	            			<NUMCLIENTE>${='986545' + org.apache.commons.lang.RandomStringUtils.randomNumeric(4)}</NUMCLIENTE>
+
+						
+
+	            			<!-- 74 = Mexicano / 23-Norcoreano/27-Cubano/54-Irani/persa /95-Sirio/99-Sudanes-->
+	            			<PAIS>74</PAIS>
+	            			
+					  
+						<CANALVENTALST>
+						  <CANALVENTA>
+						   
+						      <!-- Dependera de la configurcion del Socio -->
+						      <!-- Tipos de Canales de Venta: 1-In bound/2-Out bound/3-Sucursal/4-Digital/5-Credito Familiar/6-No Aplica-->
+						      <IDCANAL>2</IDCANAL>
+	
+						      
+						      <NOTIFICACIONLST>
+	
+						     	 <!-- N1 -->
+						       		 <NOTIFICACION>
+						       	  
+								         	<!-- Dependera de la configurcion del Socio y del canal del venta -->
+								      	<!-- Tipos de Canales de Notificacion: 1-Sanas Practicas/2-Kit de Bienvenida-->
+								          <IDNOTIFICACION>1</IDNOTIFICACION>  
+								          
+								            <!-- Tipos de Medios de Notificacion: 1-Email/2-SMS/3-Domicilio-->
+								            <MEDIOENVIOLST>
+								            <IDMEDIO>2</IDMEDIO>
+								       	  </MEDIOENVIOLST>
+								       
+								      </NOTIFICACION>	
+
+								  <!-- N2 -->
+						       		 <NOTIFICACION>
+						       	  
+								         	<!-- Dependera de la configurcion del Socio y del canal del venta -->
+								      	<!-- Tipos de Canales de Notificacion: 1-Sanas Practicas/2-Kit de Bienvenida-->
+								          <IDNOTIFICACION>2</IDNOTIFICACION>  
+								          
+								            <!-- Tipos de Medios de Notificacion: 1-Email/2-SMS/3-Domicilio-->
+								            <MEDIOENVIOLST>
+								            <IDMEDIO>3</IDMEDIO>
+								       	  </MEDIOENVIOLST>
+								       
+								      </NOTIFICACION>	
+						       	
+						      </NOTIFICACIONLST>
+						      
+						  </CANALVENTA>
+						</CANALVENTALST>
+					  
+					  <!-- Contratante - Asegurado -->
+					    <insuredLst>
+
+<!-- Asegurado - Contratante 1-->							
+							<insured>
+							  <naturalPerson>
+
+							     <!-- Nombre o Nombres del Contratante/Asegurado-->
+								<fullName>${='J Guadalupe '+org.apache.commons.lang.RandomStringUtils.random(16, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</fullName>
+								
+								<!-- Apellido Paterno del Contratante/Asegurado-->
+								<firstName>${='López '+org.apache.commons.lang.RandomStringUtils.random(14, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</firstName>
+
+								<!-- Apellido Materno del Contratante/Asegurado-->
+								<lastName>${='Leonardo '+org.apache.commons.lang.RandomStringUtils.random(12, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</lastName>
+
+								<!-- Fecha de Nacimiento del Contratante/Asegurado-->
+								<birthDate>${='196'+org.apache.commons.lang.RandomStringUtils.randomNumeric(1)+'-0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())+'-0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())}</birthDate>
+
+								<!-- Sólo aplica si el PARTYID es diff de 4 ( Scotia) -->
+								<!--Genero del Contratante/Asegurado (1male, 2female) del Contratante con base al catalogo proporcionado-->
+								<genderIdentifier>male</genderIdentifier>
+								
+								<!-- Id de la nacionalidad del Contratante-->
+								<!-- 74 = Mexicano / 23-Norcoreano/27-Cubano/54-Irani/persa /95-Sirio/99-Sudanes-->
+								<nacionalityCode>27</nacionalityCode>							
+								<pais>74</pais>
+								
+								<isfumador>0</isfumador>
+
+								<!-- RFC del Contratante/Asegurado-->
+								<rfc>MAGM930717KYA</rfc>
+								<!--<rfc>${='AA'+org.apache.commons.lang.RandomStringUtils.random(2, (charset = ('A'..'Z').join()).toCharArray())+ '6'+org.apache.commons.lang.RandomStringUtils.randomNumeric(1)+'0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())+'0'+org.apache.commons.lang.RandomStringUtils.random(1, (charset = (('1'..'9')).join()).toCharArray())+org.apache.commons.lang.RandomStringUtils.random(1, (charset = ('A'..'Z').join()).toCharArray())+org.apache.commons.lang.RandomStringUtils.random(2, (charset = (('1'..'9')).join()).toCharArray())}</rfc>-->
+							  
+							  </naturalPerson>
+
+							  
+							  <contact>
+								<address>
+								
+								  <!-- Direccion , nombre calle del Contratante/Asegurado-->
+								  <addressName>${='Calzada de las águilas '+org.apache.commons.lang.RandomStringUtils.random(14, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</addressName>
+								  
+								  <!-- Direccion, Numero del Contratante/Asegurado -->
+								  <addressNumber>433 lot 5</addressNumber>
+
+								  <!-- Id de la colonia de la Direccion del Contratante/Asegurado-->
+								  <!-- 294	Las aguilas / 713	Caxuxi-->	
+								  <addressReference>5226</addressReference>								  
+								  
+								  <!-- Codigo Postal de la Direccion del Contratante/Asegurado-->							  
+								  <addressPostalCode>65800</addressPostalCode>
+								  
+								  <state>
+								  	<!-- Id del Estado del Contratante/Asegurado-->
+									<identifier>19</identifier>
+								  </state>
+								  
+								  <district>
+								     <!-- Id de la delegacion o municipio del Contratante/Asegurado con base al catalogo proporcionado-->
+									<!-- 10 alvaro Obregon / 54	San Salvador-->
+									<identifier>2</identifier>
+								  </district>
+								</address>
+								
+								<!--Numero de Telefono del Contratante/Asegurado -->
+								<phoneContact>${='55'+org.apache.commons.lang.RandomStringUtils.randomNumeric(8)}</phoneContact>
+								
+								<!--Otro Numero de Telefono del Contratante/Asegurado -->
+								<phoneOther>${='772'+org.apache.commons.lang.RandomStringUtils.randomNumeric(7)}</phoneOther>
+								
+								<!-- Mail del Contratante/Asegurado-->
+								<email>zil.manis@gmail.com</email>
+							  </contact>
+						
+							</insured>
+
+
+							
+						</insuredLst>
+  
+					
+					</CAMPOEXTRA>
+														
+					]]>
+            		</sell:extraField>
+                </arg0>
+      </ws:saveSell>
+   </soapenv:Body>
+</soapenv:Envelope>
