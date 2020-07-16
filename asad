@@ -1,1 +1,9 @@
 ${= Calendar birthDate = Calendar.getInstance();birthDate.add(Calendar.YEAR,-59);birthDate.add(Calendar.DAY_OF_YEAR,-30);birthDate.format("yyyy-MM-dd");)}
+
+
+def now = Calendar.getInstance();now.add(Calendar.YEAR,-59);now.add(Calendar.DAY_OF_YEAR,-30);now.format("yyyy-MM-dd");
+String TimeStamp;
+Timestamp = now.format("dd/MM/yyyy")
+testRunner.testCase.testSuite.setPropertyValue( "Fecha18-45", Timestamp )
+def getLocalPropValue = testRunner.testCase.testSuite.getPropertyValue("Fecha18-45")
+log.info(getLocalPropValue);
