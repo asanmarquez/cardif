@@ -8,3 +8,7 @@ Timestamp = now.format("dd/MM/yyyy")
 testRunner.testCase.testSuite.setPropertyValue( "Fecha18-45", Timestamp )
 def getLocalPropValue = testRunner.testCase.testSuite.getPropertyValue("Fecha18-45")
 log.info(getLocalPropValue);
+
+
+
+${=def birhtDay = Calendar.getInstance();birhtDay.add(Calendar.YEAR,-59);birhtDay.add(Calendar.DAY_OF_YEAR,-30);birhtDay.format("yyyy-MM-dd")}
