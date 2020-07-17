@@ -34,7 +34,7 @@
 						<psn:lastName>${='Márquez '+org.apache.commons.lang.RandomStringUtils.random(12, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</psn:lastName>
 						
 						<!-- Fecha de Nacimiento del Contratante-->
-						<psn:birthDate>def birhtDay = Calendar.getInstance();birhtDay.add(Calendar.YEAR,-36);birhtDay.add(Calendar.DAY_OF_YEAR,1);birhtDay.format("yyyy-MM-dd")</psn:birthDate>
+						<psn:birthDate>${=def birhtDay = Calendar.getInstance();birhtDay.add(Calendar.YEAR,-20);birhtDay.add(Calendar.DAY_OF_YEAR,0);birhtDay.format("yyyy-MM-dd")}</psn:birthDate>
 						
 						<!--Genero del Asegurado (male, female) del Contratante con base al catalogo proporcionado-->
 						<psn:genderIdentifier>female</psn:genderIdentifier>
@@ -186,7 +186,7 @@
 								<lastName>${='Leonardo '+org.apache.commons.lang.RandomStringUtils.random(12, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</lastName>
 
 								<!-- Fecha de Nacimiento del Contratante/Asegurado-->
-								<birthDate>def birhtDay = Calendar.getInstance();birhtDay.add(Calendar.YEAR,-36);birhtDay.add(Calendar.DAY_OF_YEAR,1);birhtDay.format("yyyy-MM-dd")</birthDate>
+								<birthDate>${=def birhtDay = Calendar.getInstance();birhtDay.add(Calendar.YEAR,-20);birhtDay.add(Calendar.DAY_OF_YEAR,0);birhtDay.format("yyyy-MM-dd")}</birthDate>
 
 								<!-- Sólo aplica si el PARTYID es diff de 4 ( Scotia) -->
 								<!--Genero del Contratante/Asegurado (1male, 2female) del Contratante con base al catalogo proporcionado-->
@@ -260,7 +260,7 @@
 									<lastName>${='Montiel '+org.apache.commons.lang.RandomStringUtils.random(12, (charset = (('a'..'z') + ('A'..'Z')).join()).toCharArray())}</lastName>
 	
 									<!-- Fecha de Nacimiento del Contratante/Asegurado-->
-									<birthDate>def birhtDay = Calendar.getInstance();birhtDay.add(Calendar.YEAR,-36);birhtDay.add(Calendar.DAY_OF_YEAR,1);birhtDay.format("yyyy-MM-dd")</birthDate>
+									<birthDate>${=def birhtDay = Calendar.getInstance();birhtDay.add(Calendar.YEAR,-20);birhtDay.add(Calendar.DAY_OF_YEAR,0);birhtDay.format("yyyy-MM-dd")}</birthDate>
 	
 									<!-- Id de la nacionalidad del Contratante-->
 									<!-- 74 = Mexicano / 23-Norcoreano/27-Cubano/54-Irani/persa /95-Sirio/99-Sudanes-->
